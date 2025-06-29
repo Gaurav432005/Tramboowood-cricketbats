@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tramboowood Bat - Premium Cricket Equipment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #1a3a6e;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #f8c537;
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 2rem;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 20px;
+            border: none;
+            padding-left: 1rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links i {
+            margin-right: 0.3rem;
+        }
+        
+        .cart-count {
+            background-color: #f8c537;
+            color: #1a3a6e;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            margin-left: 0.3rem;
+        }
+        
+        .reviews-bar {
+            background-color: #f8c537;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .reviews-bar span {
+            font-weight: bold;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+        
+        .price-tag {
+            background-color: #f8c537;
+            color: #1a3a6e;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            background-color: #1a3a6e;
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #f8c537;
+            color: #1a3a6e;
+            transform: scale(1.05);
+        }
+        
+        .players-section {
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        .players-section h2 {
+            margin-bottom: 2rem;
+            color: #1a3a6e;
+        }
+        
+        .players-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .player-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 250px;
+            transition: transform 0.3s;
+        }
+        
+        .player-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .player-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .player-info {
+            padding: 1rem;
+        }
+        
+        .player-info h3 {
+            margin-bottom: 0.5rem;
+            color: #1a3a6e;
+        }
+        
+        .player-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .product-details {
+            padding: 3rem 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .product-details h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1a3a6e;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .product-image {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .product-specs {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .spec-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .spec-item h3 {
+            color: #1a3a6e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .spec-item p {
+            color: #666;
+        }
+        
+        footer {
+            background-color: #1a3a6e;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: #f8c537;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .login-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .login-form h2 {
+            margin-bottom: 1.5rem;
+            color: #1a3a6e;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #1a3a6e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        .login-button:hover {
+            background-color: #f8c537;
+            color: #1a3a6e;
+        }
+        
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background-color: white;
+            z-index: 200;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            overflow-y: auto;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .cart-items {
+            padding: 1rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            background-color: #f5f5f5;
+            margin-right: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .cart-item-details {
+            flex-grow: 1;
+        }
+        
+        .cart-item-details h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .cart-item-price {
+            font-weight: bold;
+            color: #1a3a6e;
+        }
+        
+        .remove-item {
+            color: #ff4d4d;
+            cursor: pointer;
+        }
+        
+        .cart-total {
+            padding: 1rem;
+            border-top: 1px solid #ddd;
+            text-align: right;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .checkout-button {
+            width: 100%;
+            padding: 1rem;
+            background-color: #1a3a6e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        .checkout-button:hover {
+            background-color: #f8c537;
+            color: #1a3a6e;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Tramboo<span>wood</span></div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search products...">
+        </div>
+        <div class="nav-links">
+            <a href="#"><i class="fas fa-user"></i> Account</a>
+            <a href="#" id="login-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <a href="#" id="cart-link"><i class="fas fa-shopping-cart"></i> Cart <span class="cart-count">0</span></a>
+        </div>
+    </header>
+    
+    <div class="reviews-bar">
+        ⭐⭐⭐⭐⭐ <span>4.9/5 from 1,287 reviews</span> | Trusted by 10,000+ customers worldwide | Free shipping on orders over ₹1000
+    </div>
+    
+    <section class="hero">
+        <h1>Tramboowood Premium Cricket Bat</h1>
+        <p>Handcrafted from premium English willow, used by professional cricketers worldwide. Perfect balance, exceptional power, and unmatched durability.</p>
+        <div class="price-tag">₹5,400</div>
+        <button class="cta-button" id="add-to-cart">Add to Cart</button>
+    </section>
+    
+    <section class="players-section">
+        <h2>Trusted by the Best in the Game</h2>
+        <div class="players-grid">
+            <div class="player-card">
+                <div class="player-img" style="background-image: url('https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="player-info">
+                    <h3>Virat Kohli</h3>
+                    <p>"The Tramboowood bat gives me perfect balance and power. My go-to bat for important matches."</p>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="player-img" style="background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="player-info">
+                    <h3>MS Dhoni</h3>
+                    <p>"The sweet spot on this bat is incredible. It's been my secret weapon for years."</p>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="player-img" style="background-image: url('https://images.unsplash.com/photo-1562077772-3bd90403f7f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="player-info">
+                    <h3>Rohit Sharma</h3>
+                    <p>"When I'm looking to hit big, I always reach for my Tramboowood. Unmatched performance."</p>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="player-img" style="background-image: url('https://images.unsplash.com/photo-1606979123981-2f9a530b1a0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="player-info">
+                    <h3>Kane Williamson</h3>
+                    <p>"The craftsmanship is exceptional. You can feel the quality from the first swing."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="product-details">
+        <h2>Product Details</h2>
+        <div class="details-grid">
+            <div class="product-image">
+                <img src="https://m.media-amazon.com/images/I/61W7o2rwPFL._AC_UF1000,1000_QL80_.jpg" alt="Tramboowood Cricket Bat">
+            </div>
+            <div class="product-specs">
+                <div class="spec-item">
+                    <h3>Premium English Willow</h3>
+                    <p>Handcrafted from Grade 1 English willow for superior performance and durability.</p>
+                </div>
+                <div class="spec-item">
+                    <h3>Perfect Weight Balance</h3>
+                    <p>Optimized weight distribution (1180-1220g) for powerful strokes with minimal effort.</p>
+                </div>
+                <div class="spec-item">
+                    <h3>Extended Sweet Spot</h3>
+                    <p>Specially designed profile maximizes the sweet spot for consistent performance.</p>
+                </div>
+                <div class="spec-item">
+                    <h3>Professional Grade</h3>
+                    <p>Used by international cricketers in all formats of the game.</p>
+                </div>
+                <div class="spec-item">
+                    <h3>Includes</h3>
+                    <p>Bat, premium bat cover, and 1-year manufacturer warranty.</p>
+                </div>
+                <button class="cta-button" id="add-to-cart-2">Add to Cart - ₹5,400</button>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Shipping Policy</a>
+            <a href="#">Returns & Exchanges</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copyright">© 2023 Tramboowood Cricket Equipment. All Rights Reserved.</p>
+    </footer>
+    
+    <div class="whatsapp-float">
+        <a href="https://wa.me/9306397159" style="color: white;"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    
+    <div class="login-modal" id="login-modal">
+        <div class="login-form">
+            <span class="close-btn" id="close-login">&times;</span>
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
+            </div>
+            <button class="login-button">Login</button>
+            <p style="text-align: center; margin-top: 1rem;">Don't have an account? <a href="#" style="color: #1a3a6e;">Register</a></p>
+        </div>
+    </div>
+    
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h3>Your Cart (1)</h3>
+            <span class="close-btn" id="close-cart">&times;</span>
+        </div>
+        <div class="cart-items">
+            <div class="cart-item">
+                <div class="cart-item-img">
+                    <img src="https://m.media-amazon.com/images/I/61W7o2rwPFL._AC_UF1000,1000_QL80_.jpg" alt="Tramboowood Bat" width="60">
+                </div>
+                <div class="cart-item-details">
+                    <h4>Tramboowood Premium Bat</h4>
+                    <div class="cart-item-price">₹5,400</div>
+                    <div>Qty: 1</div>
+                </div>
+                <div class="remove-item">
+                    <i class="fas fa-trash"></i>
+                </div>
+            </div>
+        </div>
+        <div class="cart-total">
+            Total: ₹5,400
+        </div>
+        <button class="checkout-button">Proceed to Checkout</button>
+    </div>
+    
+    <script>
+        // Login Modal
+        const loginLink = document.getElementById('login-link');
+        const loginModal = document.getElementById('login-modal');
+        const closeLogin = document.getElementById('close-login');
+        
+        loginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'flex';
+        });
+        
+        closeLogin.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+        
+        // Cart Modal
+        const cartLink = document.getElementById('cart-link');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCart = document.getElementById('close-cart');
+        const addToCartBtns = document.querySelectorAll('#add-to-cart, #add-to-cart-2');
+        const cartCount = document.querySelector('.cart-count');
+        
+        let cartItems = 0;
+        
+        cartLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            cartModal.style.display = 'b
